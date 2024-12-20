@@ -1,11 +1,17 @@
-// const mediaType = 'movie' // options: movie, tv, person, all
-//   const timeWindow = 'day' // options: day, week
+export async function fetchHelper<T>(url: string): Promise<T | null> {
+    try {
+      const response = await fetch(url);
 
-//   // endpoints
-// //   const trending = `https://api.themoviedb.org/3/trending/${mediaType}/${timeWindow}?api_key=${process.env.NEXT_API_KEY}`
+      if (!response.ok) {
+        console.error(`Fetch error: ${response.status} ${response.statusText}`);
+        return null;
+      }
 
-  export const fetchHelper = (url: string | URL | Request) => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => console.log((data)));
+      const data = (await response.json()) as T;
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error('Fetch failed:', error);
+      return null;
+    }
   }
