@@ -1,11 +1,11 @@
-export type TrendingItem = {
-    id: number;
-    title: string;
-    overview: string;
-    poster_path: string;
-  };
+export type ListItem = {
+  id: number;
+  title: string;
+  overview: string;
+  poster_path: string;
+  name?: string;
+};
 
-  export type OtherDataItem = {
-    id: number;
-    someProperty: string;
-  };
+export type ListResponse = {
+  results: ListItem[];
+};
