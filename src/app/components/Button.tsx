@@ -1,15 +1,16 @@
 type ButtonProps = {
     name: string;
+    classStyles?: string;
     style?: string;
+    onClick: () => void;
 }
 
-export default function Button({name, style}: ButtonProps) {
-    // const basic = ""
+export default function Button({name, classStyles, onClick}: ButtonProps) {
     let buttonStyle;
-    if (!style) {
+    if (!classStyles) {
         buttonStyle = 'btn btn-default';
     } else {
-        buttonStyle = style;
+        buttonStyle = classStyles;
     }
-   return <button className={`btn ${buttonStyle}`}>{name}</button>
+   return <button className={`btn ${buttonStyle}`} onClick={onClick}>{name}</button>
 }

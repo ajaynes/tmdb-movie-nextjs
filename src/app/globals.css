@@ -16,8 +16,8 @@
 /*
   button styles:
   default - white w/ dark grey text gray border
-  primary -
-  accent -
+  primary - blue w/ dark grey text
+  accent - orange w/ dark grey text
 */
 
 :root {
@@ -39,10 +39,13 @@ body {
 }
 
 .btn {
-  @apply font-bold py-1 px-3 rounded;
+  @apply font-bold py-1 px-3 rounded border border-slate-800;
+}
+.btn-round {
+  @apply rounded-full;
 }
 .btn-default {
-  @apply bg-slate-300 text-black;
+  @apply bg-slate-300 text-slate-800;
 }
 .btn-default:hover {
   @apply bg-slate-50;
@@ -52,4 +55,16 @@ body {
 }
 .btn-primary:hover {
   @apply bg-cyan-600;
+}
+.btn-accent {
+  @apply bg-orange-600 text-slate-800;
+}
+.btn-accent:hover {
+  @apply bg-orange-700 text-slate-50;
+}
+
+.carousel .btn {
+  @apply absolute z-10 border-0 py-3 px-5 text-lg;
+  top: 50%;
+  transform: translateY(-50%);
 }
