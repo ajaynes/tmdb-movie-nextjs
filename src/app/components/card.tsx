@@ -17,7 +17,12 @@ function Card({ item, itemsPerPage }: CardProps) {
       style={{
         flex: `0 0 ${100 / itemsPerPage}%`,
       }}>
-      <Link href={`/${item.title.replaceAll(' ', '-').toLowerCase()}`}>
+      <Link
+        href={{
+          pathname: `/${item.title.replaceAll(' ', '-').toLowerCase()}`,
+          query: { id: item.id },
+        }}
+>
         <div className='relative'>
           <Image
             src={item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : 'https://placehold.co/500x400'}

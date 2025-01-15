@@ -7,7 +7,7 @@ import { ListResponse } from './types';
 import Carousel from './components/Carousel'
 
 const mediaType = 'movie';
-const timeWindow = 'day';
+const timeWindow = 'week';
 const trendingEndpoint = `https://api.themoviedb.org/3/trending/${mediaType}/${timeWindow}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
 export default function Home() {
