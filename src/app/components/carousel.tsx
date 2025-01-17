@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useDataStore, DataStore } from '../store';
+import { formatDate } from '../utils/formatting';
 import Card from './Card';
 import Button from './Button';
 
@@ -57,11 +58,27 @@ function Carousel({ type }: CarouselProps) {
       >
         {extendedItems.map((item, index) => (
           <Card
-            key={`${item.id}-${index}`}
-            item={item}
-            itemsPerPage={itemsPerPage}
-            voteAverage={item.vote_average ?? 0}
-          />
+          key={`${item.id}-${index}`}
+          item={item}
+          itemsPerPage={5}
+          link={`/${item.id}`}
+          imageUrl={
+            item.poster_path
+              ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
+              : 'https://placehold.co/500x400'
+          }
+          imageAlt={item.title || item.name || 'No Title'}
+          voteAverage={item.vote_average} // Pass the voteAverage
+          renderContent={(movie) => (
+            <>
+              <h3 className="card-title">{movie.title || movie.name}</h3>
+              <p className="card-overview">
+                {movie.release_date ? formatDate(movie.release_date) : 'No Release Date'}
+              </p>
+            </>
+          )}
+        />
+
         ))}
       </div>
       <Button

@@ -92,3 +92,28 @@ export type DetailItem = {
 export type DetailResponse = {
   results: DetailItem[];
 }
+
+type ReviewAuthor = {
+  name: string;
+  username: string;
+  avatar_path: string;
+  rating: string;
+}
+
+type ReviewItem = {
+  author: string;
+  author_details: ReviewAuthor;
+  content: string;
+  created_at: string;
+  id: string;
+  updated_at: string;
+  url: string;
+}
+
+export type ReviewResponse = {
+  id: number;
+  page: number;
+  results: ReviewItem[];
+  total_pages: number;
+  total_results: number;
+}
