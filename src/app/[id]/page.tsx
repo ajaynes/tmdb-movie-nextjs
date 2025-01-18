@@ -14,7 +14,6 @@ function DetailsPage() {
 
   const { setDetailsData, setReviewsData } = useDataStore();
 
-  // Declare the endpoints within useEffect
   const detailsEndpoint = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&append_to_response=credits&include_image_language=en,null`;
   const reviewsEndpoint = `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
@@ -34,17 +33,22 @@ function DetailsPage() {
 
     fetchDetails();
     fetchReviews();
-  }, [detailsEndpoint, reviewsEndpoint, id, setDetailsData, setReviewsData]);  // Add the endpoints as dependencies
+  }, [detailsEndpoint, reviewsEndpoint, id, setDetailsData, setReviewsData]);
 
   return (
     <div>
       <Hero />
-      <h1>Dynamic Page</h1>
-      <p>ID: {id}</p>
-      <Cast />
-      <Reviews />
+      <div className='bg-slate-50 container mx-auto'>
+        <div className='flex flex-row lg:px-16 md:px-10 sm:px-5 gap-8'>
+          <Cast />
+          <div className='mx-auto w-1/5 text-slate-700'>
+            <div className='w-full pt-6'>Sidebar content here</div>
+          </div>
+        </div>
+        <Reviews />
+      </div>
     </div>
   );
-};
+}
 
 export default DetailsPage;

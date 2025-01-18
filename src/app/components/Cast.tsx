@@ -8,34 +8,33 @@ function Cast() {
         return <p>Loading...</p>;
     }
 
-
-
-    console.log(detailsData)
-
+    const castData = detailsData.credits.cast
 
     return (
-        <div>
-            {detailsData.credits.cast.map((credit, index) => (
+        <div className='w-4/5 overflow-x-auto bg-slate-50'>
+
+        <div className='flex space-x-4 py-4'>
+            {castData.map((credit, index) => (
                 <Card
+                className='flex-shrink-0 w-64 bg-slate-50 shadow-lg border border-slate-200  min-h-[400px]'
                 key={`${credit.id}-${index}`}
                 item={credit}
-                itemsPerPage={5}
-                link="#"
                 imageUrl={
                     credit.profile_path
                     ? `https://image.tmdb.org/t/p/w500${credit.profile_path}`
-                    : 'https://placehold.co/500x400'
+                    : 'https://picsum.photos/id/237/500/750'
                 }
                 imageAlt={credit.name}
                 renderContent={(credit) => (
-                  <>
-                    <h3 className="card-title">{credit.name}</h3>
-                    <p className="card-overview">{credit.character}</p>
-                  </>
+                  <div className='p-1.5'>
+                    <h3 className="card-title font-bold text-slate-700 text-xl">{credit.name}</h3>
+                    <p className="card-overview text-slate-700">{credit.character}</p>
+                  </div>
                 )}
               />
 
             ))}
+        </div>
         </div>
     )
 }

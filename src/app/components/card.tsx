@@ -4,41 +4,46 @@ import Rating from './Rating';
 
 type CardProps<T> = {
   item: T;
-  itemsPerPage: number;
   renderContent: (item: T) => React.ReactNode;
   link?: string;
   imageUrl?: string;
   imageAlt?: string;
-  voteAverage?: number; // Optional vote average
+  voteAverage?: number;
+  className?: string;
 };
 
-function Card<T>({ item, itemsPerPage, renderContent, link, imageUrl, imageAlt, voteAverage }: CardProps<T>) {
+function Card<T>({ item, renderContent, link, imageUrl, imageAlt, voteAverage, className }: CardProps<T>) {
+  const cardContent = (
+    <div className={`${className} relative`}>
+      {imageUrl && (
+        <Image
+          src={imageUrl}
+          alt={imageAlt || 'Image'}
+          width={300}
+          height={300}
+          className="card-image"
+        />
+      )}
+      {typeof voteAverage === 'number' && (
+        <div className="absolute bottom-32 right-2">
+          <Rating voteAverage={voteAverage} maxValue={10} />
+        </div>
+      )}
+      <div className="card-content">{renderContent(item)}</div>
+    </div>
+  );
+
   return (
     <div
       className="card box-border p-2"
-      style={{
-        flex: `0 0 ${100 / itemsPerPage}%`,
-      }}
     >
-      <Link href={link || '#'} passHref>
-        <div className="relative">
-          {imageUrl && (
-            <Image
-              src={imageUrl}
-              alt={imageAlt || 'Image'}
-              width={300}
-              height={300}
-              className="card-image"
-            />
-          )}
-          {typeof voteAverage === 'number' && (
-            <div className="absolute -bottom-3 right-3">
-              <Rating voteAverage={voteAverage} maxValue={10} />
-            </div>
-          )}
-        </div>
-        <div className="card-content">{renderContent(item)}</div>
-      </Link>
+      {link ? (
+        <Link href={link} passHref>
+          {cardContent}
+        </Link>
+      ) : (
+        cardContent
+      )}
     </div>
   );
 }

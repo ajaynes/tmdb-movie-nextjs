@@ -35,11 +35,10 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn {
-  @apply font-bold py-1 px-3 rounded border border-slate-800;
+  @apply py-1 px-3 rounded border border-slate-800;
 }
 .btn-round {
   @apply rounded-full;
@@ -64,7 +63,7 @@ body {
 }
 
 .carousel .btn {
-  @apply absolute z-10 border-0 py-3 px-5 text-lg;
+  @apply font-bold absolute z-10 border-0 py-3 px-5 text-lg;
   top: 50%;
   transform: translateY(-50%);
 }

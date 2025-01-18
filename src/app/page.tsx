@@ -25,7 +25,7 @@ export default function Home() {
   }, [setTrendingData]);
 
   return (
-    <div>
+    <div className='container mx-auto flex flex-col lg:px-16 md:px-10 sm:px-5'>
       <Carousel type="trendingData" />
     </div>
   );
