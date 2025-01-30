@@ -15,18 +15,18 @@ export type ListResponse = {
 type Genres = {
   id: number;
   name: string;
-}
+};
 
 type ProductionCompanies = {
   iso_3166_1: string;
-  name: string
-}
+  name: string;
+};
 
 type SpokenLanguages = {
   english_name: string;
-  iso_639_1: string
-  name: string
-}
+  iso_639_1: string;
+  name: string;
+};
 type Cast = {
   adult: boolean;
   cast_id: 0;
@@ -59,7 +59,7 @@ type Crew = {
 type Credits = {
   cast: Cast[];
   crew: Crew[];
-}
+};
 
 export type DetailItem = {
   adult: boolean;
@@ -91,14 +91,14 @@ export type DetailItem = {
 
 export type DetailResponse = {
   results: DetailItem[];
-}
+};
 
 type ReviewAuthor = {
   name: string;
   username: string;
   avatar_path: string;
   rating: string;
-}
+};
 
 type ReviewItem = {
   author: string;
@@ -108,7 +108,7 @@ type ReviewItem = {
   id: string;
   updated_at: string;
   url: string;
-}
+};
 
 export type ReviewResponse = {
   id: number;
@@ -116,4 +116,13 @@ export type ReviewResponse = {
   results: ReviewItem[];
   total_pages: number;
   total_results: number;
-}
+};
+
+export type BaseItem = {
+  id: string | number;
+  poster_path?: string;
+  title?: string;
+  name?: string;
+  vote_average?: number;
+  release_date?: string;
+};
