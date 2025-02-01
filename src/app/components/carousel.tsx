@@ -57,10 +57,10 @@ function Carousel<T extends BaseItem>({ type, items, renderItem, itemsPerPage = 
 
   return (
     <div className="carousel relative w-full mx-auto">
-      {title && <h2 className="text-xl font-bold mb-4">{title}</h2>}
+      {title && <h2 className="text-xl font-bold text-slate-700 p-2 mt-4">{title}</h2>}
       <Button
         name=""
-        classStyles="btn-accent carousel-btn prev -left-0"
+        classStyles="carousel-btn btn-round border-2 bg-slate-700 opacity-30 hover:opacity-80 prev -left-0"
         onClick={() => handleScroll('prev')}
       />
       <div className="flex transition-transform duration-300 ease-in-out">
@@ -96,7 +96,7 @@ function Carousel<T extends BaseItem>({ type, items, renderItem, itemsPerPage = 
       </div>
       <Button
         name=""
-        classStyles="btn-accent carousel-btn next -right-0"
+        classStyles="carousel-btn btn-round border-2 bg-slate-700 opacity-30 hover:opacity-80 next -right-0"
         onClick={() => handleScroll('next')}
       />
     </div>

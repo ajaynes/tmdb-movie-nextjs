@@ -12,7 +12,6 @@ function Cast() {
   const castData = detailsData.credits.cast;
 
   return (
-    <div className='w-4/5 bg-slate-50'>
       <Carousel
         title='Cast'
         items={castData}
@@ -23,17 +22,16 @@ function Cast() {
             item={credit}
             imageUrl={credit.profile_path ? `https://image.tmdb.org/t/p/w500${credit.profile_path}` : 'https://picsum.photos/id/237/500/750'}
             imageAlt={credit.name}
-            className='shadow-md  min-h-[400px]'
+            className="shadow-md  min-h-[400px]"
             renderContent={(credit) => (
-              <div className='p-1.5'>
-                <h3 className='card-title font-bold text-slate-700 text-xl'>{credit.name} {credit.profile_path ? null : <span>Not Pictured</span>}</h3>
-                <p className='card-overview text-slate-700'>{credit.character}</p>
+              <div className="p-1.5">
+                <h3 className="card-title font-bold text-slate-700 text-xl">{credit.name} {credit.profile_path ? null : <span>Not Pictured</span>}</h3>
+                <p className="card-overview text-slate-700">{credit.character}</p>
               </div>
             )}
           />
         )}
       />
-    </div>
   );
 }
 

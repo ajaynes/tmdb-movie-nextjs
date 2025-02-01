@@ -1,25 +1,30 @@
 import { useDataStore } from '../store';
+import Accordion from './Accordion';
+import { formatDate } from '../utils/formatting';
 function Reviews() {
-    const reviewsData = useDataStore((state) => state.reviewsData);
+  const reviewsData = useDataStore((state) => state.reviewsData);
 
-    if (!reviewsData) {
-        return <p>Loading...</p>;
-    }
+  if (!reviewsData) {
+    return <p>Loading...</p>;
+  }
 
-    console.log(reviewsData.results)
+  const accordionArray: { title: string; content: string }[] = [];
 
-    return (
-       <div>
-         {reviewsData.results.map((review) => (
-            <div key={review.id}>
-                <p>{review.author_details.username}</p>
-                <p>{review.author_details.rating}</p>
-                <p>{review.content}</p>
-                <p>{review.created_at}</p>
-            </div>
-         ))}
-       </div>
-    )
+  reviewsData.results.forEach((result) => {
+    accordionArray.push({
+      title: `<b>${result.author}</b> reviewed this on ${formatDate(result.created_at)}`,
+      content: `${result.author_details.rating ? '<div class="rating-tag">' + result.author_details.rating * 10 + '%</div>' : ''} ${result.content}`,
+    });
+  });
+
+  return (
+    <div className="p-2">
+      <hr className="h-px my-8 bg-gray-400 border-0" />
+      <h2 className="text-xl font-bold mb-4 text-slate-700">Reviews</h2>
+      {accordionArray.length === 0 && <p>No reviews found.</p>}
+      <Accordion items={accordionArray} />
+    </div>
+  );
 }
 
 export default Reviews;

@@ -7,6 +7,7 @@ import { DetailItem, ReviewResponse } from '../types';
 import Cast from '../components/Cast';
 import Hero from '../components/Hero';
 import Reviews from '../components/Reviews';
+import Sidebar from '../components/Sidebar';
 
 function DetailsPage() {
   const params = useParams();
@@ -38,14 +39,18 @@ function DetailsPage() {
   return (
     <div>
       <Hero />
-      <div className='bg-slate-50 container mx-auto'>
-        <div className='flex flex-row lg:px-16 md:px-10 sm:px-5 gap-8'>
+      <div className="bg-slate-50 container mx-auto">
+        <div className="flex flex-row lg:px-16 md:px-10 sm:px-5 gap-8">
+          <div className="w-4/5 bg-slate-50">
+
           <Cast />
-          <div className='mx-auto w-1/5 text-slate-700'>
-            <div className='w-full pt-6'>Sidebar content here</div>
+          <Reviews />
+          </div>
+          <div className="mx-auto w-1/5 text-slate-700">
+            <div className="w-full pt-6"><Sidebar /></div>
           </div>
         </div>
-        <Reviews />
+
       </div>
     </div>
   );

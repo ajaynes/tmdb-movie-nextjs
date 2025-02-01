@@ -97,7 +97,7 @@ type ReviewAuthor = {
   name: string;
   username: string;
   avatar_path: string;
-  rating: string;
+  rating: number;
 };
 
 type ReviewItem = {
